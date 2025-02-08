@@ -1,26 +1,27 @@
 
 import Resultcard from "../components/resultcard";
-import { DataContext } from "../context/context";
-import { useContext, useMemo } from "react";
+import { useMemo } from "react";
 import {useNavigate} from 'react-router'
+import { useDispatch, useSelector } from "react-redux";
+import { ressetQuiz } from '../features/counter/quizSlice'
 
 export default function Score () {
-  const { tabReponse,setTabReponse } = useContext(DataContext);
+  const tabResponse = useSelector((state) => state.quiz.tabResponse);
+  console.log("tabResponse:", tabResponse)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   
-  const score = useMemo (() => tabReponse.filter(item => item.correct_answer === item.yours).length
-   , [tabReponse])
-
-
-  const navigate = useNavigate ()
+  const score = useMemo (() => tabResponse.filter(item => item.correct_answer === item.yours).length
+   , [tabResponse])
 
   const handleStar = () => {
-    setTabReponse ([])
+    dispatch(ressetQuiz())
     navigate ("/")
   }
 
   return (
     <>
-      <Resultcard tabResponse = {tabReponse} score={score} star = {handleStar} />
+      <Resultcard tabResponse = {tabResponse} score={score} star = {handleStar} />
     </>
   );
 }

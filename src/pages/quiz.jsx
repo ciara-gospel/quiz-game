@@ -1,22 +1,24 @@
 
 import Quizcard from "../components/quizcard";
-import { useState, useContext,useEffect } from "react";
-import { DataContext } from "../context/context";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import {useParams} from 'react-router'
+import { useDispatch, useSelector } from "react-redux";
+import { addResponse } from "../features/counter/quizSlice"; 
 
 export default function Quiz () {
   const {number: num} =useParams()
   const number = parseInt(num, 10)
   const [time,setTime]=useState(20)
-  const { tabQuestions, setTabReponse, tabReponse } =
-    useContext (DataContext);
+  const dispatch = useDispatch()
   const navigate = useNavigate ();
+
+   const tabQuestion = useSelector((state) => state.quiz.tabQuestion)
 
   const handleNext = (question, response) => {
     setTime (20)
     const newQuestion = { ...question, yours: response };
-    setTabReponse ([...tabReponse, newQuestion]);
+    dispatch(addResponse(newQuestion))
     if (number === 10) {
      return navigate("/ScorePage");
     }
@@ -32,15 +34,15 @@ export default function Quiz () {
       },1000);
       return () => clearInterval (t)
     } else if (time === 0){
-      handleNext (tabQuestions[number],"")
+      handleNext (tabQuestion[number],"")
     }
   },)
 
   return (
     <Quizcard
       next = {handleNext}
-      question = {tabQuestions[number-1]}
-      totalQuestion = {tabQuestions.length}
+      question = {tabQuestion[number-1]}
+      totalQuestion = {tabQuestion.length}
       number = {number}
       time = {time}
     />

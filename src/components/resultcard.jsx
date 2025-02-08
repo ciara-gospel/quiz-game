@@ -35,9 +35,7 @@ export default function Resultcard ({ tabResponse, score, star }) {
               })}
             </tbody>
           </table>
-          <button onClick={() => star()} className="btn btn-outline-info ">
-            restart
-          </button>
+          <button onClick={() => star()} className="btn btn-outline-info ">restart</button>
         </div>
       </div>
     </div>

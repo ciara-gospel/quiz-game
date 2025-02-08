@@ -1,0 +1,95 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .card-box {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #b1acac;
+    height: 400px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+    border-radius: 15px;
+    background: #ebebeb;
+  }
+  
+  .card-box h1 h2 {
+    font-size: 2.5rem;
+    background: #fff;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  body {
+    background: #fff;
+  }
+  
+  .box {
+    height: 100vh;
+    display: flex;
+    place-items: center;
+    align-items: center;
+    width: 100%;
+    background: #fff;
+    color: #000;
+  }
+  
+  .bo {
+    display: flex;
+    place-items: center;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .list {
+    width: 100%;
+  }
+  
+  .btn {
+    margin: 0 auto;
+    width: 200px !important;
+    font-size: 1.3rem !important;
+    background-color: #fff;
+    color: #000 !important;
+    border-radius: 6rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .question-box {
+    height: auto;
+  }
+  
+  ol {
+    text-align: start;
+  }
+  
+  li {
+    padding: 0.3rem;
+  }
+  
+  .btn:hover {
+    background-color: #ebebeb;
+  }
+  
+  .card-header {
+    background-color: #fff;
+    box-shadow: 0 0 4px;
+    border-radius: 100px;
+    color: #000;
+  }
+  
+  tr {
+    background-color: #ebebeb;
+    box-shadow: 0 0 4px -2px;
+    color: #000;
+  }
+  
+  .table {
+    padding: 1rem;
+  }
+  

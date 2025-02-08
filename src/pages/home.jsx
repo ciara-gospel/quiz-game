@@ -1,9 +1,10 @@
 
 import Welcomecard from "../components/welcomecard";
 import { useNavigate } from "react-router";
-import { useEffect, useContext,useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getQuestion } from "../services/script";
-import { DataContext } from "../context/context";
+import { useDispatch } from "react-redux";
+import { setQuestion } from "../features/counter/quizSlice";
 
 export default function Home () {
   const navigate = useNavigate ()
@@ -13,8 +14,9 @@ export default function Home () {
     navigate ("/Quiz/1")
     
   }
-
-  const {setQuestions} = useContext (DataContext)
+        const dispatch = useDispatch();
+       
+  
 
   useEffect (() => {
     handleGetQuextion ()
@@ -23,7 +25,7 @@ export default function Home () {
   const handleGetQuextion = () => {
     getQuestion().then (data => {
       if (data) {
-        setQuestions (data)
+        dispatch(setQuestion(data))
         setIsLoading (true)
       }
     })
